@@ -1,10 +1,10 @@
 {% extends 'admin/base_site.html' %} {% block content %}
 <div id="content-main">
-  <h2>Clear cache</h2>
-  <form method="post">
+  <h2>Clear cache by Key</h2>
+  <form method="post" name="delete-by-key">
     {% csrf_token %} {{ form.as_p }}
     <div class="submit-row">
-      <input type="submit" class="button" name="clearcache" value="Clear cache now 💣" />
+      <input type="submit" class="button" value="Clear cache key now 💣" />
     </div>
   </form>
 </div>

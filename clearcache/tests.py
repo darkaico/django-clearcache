@@ -5,6 +5,8 @@ from django.core.cache import cache
 from django.core.management import call_command
 from django.urls import reverse
 
+from clearcache.forms import get_cache_choices
+
 CACHE_KEY = "example_cache_key"
 CACHE_VALUE = "example_cache_value"
 
@@ -56,3 +58,9 @@ def test_clears_cache_via_admin_ui(admin_client):
     admin_client.post(reverse("clearcache_admin"), {"cache_name": "default"})
 
     assert cache.get(CACHE_KEY) is None, "Cache cleared"
+
+
+def test_get_cache_choices_default_case():
+    result = get_cache_choices()
+
+    assert result == [("default", "default (django.core.cache.backends.locmem.LocMemCache")]
